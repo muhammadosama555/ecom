@@ -4,7 +4,7 @@ const Product = require("../models/Product");
 const { verifyToken, verifyTokenAndAutherizations, verifyTokenAndAdmin } = require("./verifyToken");
 
 
-//CREATE USER
+//CREATE PRODUCTS
 router.post("/",verifyTokenAndAdmin,async (req,res)=>{
     
     const newProduct= new Product(req.body)
@@ -19,11 +19,6 @@ router.post("/",verifyTokenAndAdmin,async (req,res)=>{
     }
 
 })
-
-
-
-
-
 
 
 
@@ -54,7 +49,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
       res.status(500).json(err)
     }
   })
-  //GET USER
+  //GET PRODUCT
   router.get("/find/:id",async (req,res)=>{
     try {
       const product= await Product.findById(req.params.id)
@@ -65,7 +60,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
       res.status(500).json(err)
     }
   })
-  //GET ALL USER
+  //GET ALL PRODUCTS
   router.get("/",async (req,res)=>{
 
     const qNew= req.query.new;
